@@ -1,0 +1,51 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Vicky @ Annadurai
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+         
+    
+<odoo>
+    
+    <record model="ir.ui.view" id="twitter_config_form">
+        <field name="name">twitterConfigform</field>
+        <field name="model">twitter.config</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+        <form string="Twitter Configuration">
+        <sheet>
+            <group>
+                <field name="account_name" />
+                <field name="consumer_key" password= "True" />
+                <field name="consumer_secret" password= "True" />
+                <field name="access_token" password= "True" />
+                <field name="access_secret" password= "True" />
+            </group>   
+        </sheet>
+        </form>
+        </field>
+  </record>
+
+  <record model="ir.ui.view" id="twitter_config_tree">
+        <field name="name">twitterConfigtree</field>
+        <field name="model">twitter.config</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+        <tree string="twitter">
+           <field name="consumer_key" password= "True" />
+           <field name="consumer_secret" password= "True" />
+           <field name="access_token" password= "True"/>
+           <field name="access_secret" password= "True"/>
+        </tree>
+        </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_twitter_base_config">
+    <field name="name">Twitter_Config</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="res_model">twitter.config</field>
+  </record>
+
+  <menuitem name="Twitter Configuration" parent="twitter_child" id="twitter_base_child" 
+   action="action_twitter_base_config" />
+   
+ </odoo>

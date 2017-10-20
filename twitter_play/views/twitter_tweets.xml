@@ -1,0 +1,74 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Vicky @ Annadurai
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+     
+<odoo>
+    <record model="ir.ui.view" id="twitter_form">
+        <field name="name">twitterform</field>
+        <field name="model">twitter.test</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+        <form string="Twitter">
+        <header>
+              <button name="checktweet" type="object" String="CheckTweet"
+                class="oe_highlight" icon="fa-twitter-square"
+                help="check tweet " />
+               <button name="updatetweet" type="object" String="Tweet it !"
+                class="oe_highlight" icon="fa-twitter"
+                help="tweet " />
+                 <button name="checkOtherstweet" type="object" String="Check others tweet !"
+                class="oe_highlight" icon="fa-commenting-o"
+                help="tweet " />
+        </header>
+        <sheet>
+        <group string="Twitter Feeds" style="width: 40%%" col="2"
+        colspan="4">
+            <field name="twitter_account" password= "True" />
+            <field name="user_name" />
+            <field name="tw_hashtag" />
+            <field name="twitter_home_feed" />
+            <field name="twitter_timeline_feed" />
+           <!--  <field name="twitter_all" /> -->
+           <field name="twitter_status_update" />
+           <field name="twitter_uuid" />
+            <field name="twitter_followers_count" />
+            </group>
+        <group string="Other USERS FEED" style="width: 40%%" col="2" icon="fa-commenting-o"
+            colspan="4">
+            <field name="twitter_other_user" class="oe_highlight"/>
+            <field name="twitter_other_user_tweets" />
+            <field name="twitter_other_user_screen_name" />
+            <field name="twitter_other_user_follower_count"  />
+            <field name="twitter_other_user_friend_list" />
+            <field name="twitter_other_user_follower_ids" />
+            <field name="twitter_stream_filter" />
+            <field name="twitter_status_location" />
+        </group>
+        </sheet>
+        </form>
+        </field>
+  </record>
+
+  <record model="ir.ui.view" id="twitter_tree">
+        <field name="name">twittertree</field>
+        <field name="model">twitter.test</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+        <tree string="twitter">
+           <field name="twitter_home_feed" />
+           <field name="twitter_timeline_feed" />
+        </tree>
+        </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_twitter_base">
+    <field name="name">Twitter_test</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="res_model">twitter.test</field>
+  </record>
+
+ <menuitem name="Twitter_Tweet" icon="terp-project" id="TwitterIT" />
+  <menuitem name="TweetIT" parent="TwitterIT" id="twitter_child" 
+   action="action_twitter_base" />
+ </odoo>
